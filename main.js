@@ -70,9 +70,9 @@ function outputCode(code, prefix = '~> ') {
                 i.innerHTML += `<span class="other output">${j}</span>`;
         } else  if (inString) {
             i.innerHTML += `<span class="string output">${j}</span>`;
-        } else if (['var', 'let', 'const', 'function', 'class', 'undefined', 'null', 'NaN'].includes(j)) {
+        } else if (['var', 'let', 'const', 'function', 'class', 'undefined', 'null', 'NaN','true','false'].includes(j)) {
             i.innerHTML += `<span class="keywords1 output">${j}</span>`;
-        } else if (['for', 'if', 'else'].includes(j)) {
+        } else if (['for', 'if', 'else','try','catch'].includes(j)) {
             i.innerHTML += `<span class="keywords2 output">${j}</span>`;
         } else if (!isNaN(Number(j))) {
             i.innerHTML += `<span class="number output">${j}</span>`;
