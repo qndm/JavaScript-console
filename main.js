@@ -39,7 +39,7 @@ function outputCode(code, prefix = '~> ') {
     var codes = [];//code.split(/=| |;|,|\.|{|}|\+|\-|\*|\/|\\|\||\n|%|!|\[|\]|\(|\)|~|`|'|"|<|>|\?|:|&/);
     var a = '';
     for (let j of code) {
-        let k = j.match(/=| |;|,|.|{|}|\+|\-|\*|\/|\\|\||\n|\%|\!|\[|\]|\(|\)|~|`|'|"|<|>|\?|:|&|^|~/);
+        let k = j.match(/\=| |\;|\,|\.|\{|\}|\+|\-|\*|\/|\\|\||\n|\%|\!|\[|\]|\(|\)|\~|\`|\'|\"|\<|\>|\?|\:|\&|\^|\~/);
         if (k) {
             if (a) codes.push(a);
             a = '';
@@ -67,7 +67,8 @@ function outputCode(code, prefix = '~> ') {
                 inString = !inString;
                 i.innerHTML += `<span class="string output">${j}</span>`;
             } else
-                i.innerHTML += `<span class="other output">${j}</span>`;
+                if (inString) i.innerHTML += `<span class="string output">${j}</span>`;
+                else i.innerHTML += `<span class="other output">${j}</span>`;
         } else if (inString) {
             i.innerHTML += `<span class="string output">${j}</span>`;
         } else if (['var', 'let', 'const', 'function', 'class', 'undefined', 'null', 'NaN', 'true', 'false', 'void', 'arguments', 'export', 'delete', 'debugger', 'in', 'of', 'instanceof', 'interface', 'new', 'super', 'this', 'typeof'].includes(j)) {
