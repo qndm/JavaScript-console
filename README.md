@@ -1,2 +1,2 @@
 # JavaScript-console
-适用于浏览器的JavaScript控制台，模拟Node环境（不完全模拟）
+一个很水的JavsScript控制台
